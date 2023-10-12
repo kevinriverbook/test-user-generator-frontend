@@ -37,7 +37,7 @@ export default function Home() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const getData = async ():  Promise<void> => {
-    const res = await fetch(apiUrl + '/generate_test_users/');
+    const res = await fetch(apiUrl + 'generate_test_users');
     if (!res.ok) {
       throw new Error('データ取得に失敗しました');
     }
