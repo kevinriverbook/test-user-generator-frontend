@@ -34,8 +34,10 @@ type TestUser = {
 export default function Home() {
   const [testUsers, seTestUsers] = useState<TestUser | null>(null);
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   const getData = async ():  Promise<void> => {
-    const res = await fetch('http://localhost:3001/api/v1/generate_test_users/');
+    const res = await fetch(apiUrl + '/generate_test_users/');
     if (!res.ok) {
       throw new Error('データ取得に失敗しました');
     }
