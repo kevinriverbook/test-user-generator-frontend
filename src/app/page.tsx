@@ -45,18 +45,6 @@ export default function Home() {
     seTestUsers(data);
   }
 
-  const formatDate = (dateString: string): string => {
-    const date = new Date(dateString);
-
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-
-    const formattedDate = `${year}年${month}月${day}日`;
-
-    return formattedDate
-  }
-
   return (
     <ThemeProvider theme={theme}>
       <main className={styles.main}>
@@ -72,7 +60,7 @@ export default function Home() {
               <TableBody>
                 <TableRow>
                   <TableCell sx={{ fontSize: 16 }}>{testUsers.name}</TableCell>
-                  <TableCell sx={{ fontSize: 16 }}>{formatDate(testUsers.birthday)}</TableCell>
+                  <TableCell sx={{ fontSize: 16 }}>{testUsers.birthday}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
