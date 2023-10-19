@@ -32,6 +32,18 @@ Web開発のローカル環境でユーザー等を作成する際、実在す�
 ### アーキテクチャ
 <img width="70%" alt="testusergenerator" src="https://github.com/kevinriverbook/test-user-generator-frontend/assets/92033434/3558e1b0-9ad1-4f94-a9ce-62c7c8c6ce79">
 
+## 技術的な挑戦
+
+### フロントエンドとバックエンドの分離
+- フロントエンドとバックエンドを分離したモダンなアーキテクチャで実装しました
+
+### git-flow
+- Gitワークフローにgit-flowを採用しました
+
+### タスク管理
+- タスク管理にはTrelloを使用しています
+
+
 ## 今後の予定
 - 新機能の追加
 - Jestを使用したテストの作成
