@@ -63,7 +63,7 @@ export default function Home() {
             </Table>
           </TableContainer>
         }
-        <Button  sx={{ mt: 4 }} variant="contained" type="submit" onClick={getData}>生成</Button>
+        <Button sx={{ mt: 4 }} variant="contained" type="submit" onClick={getData}>生成</Button>
       </main>
     </ThemeProvider>
   )
