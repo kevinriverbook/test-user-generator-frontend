@@ -20,19 +20,14 @@ const theme = createTheme({
   },
 });
 
-const columns = [
-  { id: 'column1', label: 'Column 1', width: 100 },
-  { id: 'column2', label: 'Column 2', width: 100 },
-];
-
-
 type TestUser = {
-  name: string
-  birthday: string
+  name: string;
+  birthday: string;
+  age: number;
 }
 
 export default function Home() {
-  const [testUsers, seTestUsers] = useState<TestUser | null>(null);
+  const [testUsers, setTestUsers] = useState<TestUser | null>(null);
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -42,7 +37,7 @@ export default function Home() {
       throw new Error('データ取得に失敗しました');
     }
     const data = await res.json();
-    seTestUsers(data);
+    setTestUsers(data);
   }
 
   return (
@@ -53,14 +48,16 @@ export default function Home() {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ width: 40, fontSize: 16, fontWeight: 'bold' }}>氏名</TableCell>
-                  <TableCell sx={{ width: 40, fontSize: 16, fontWeight: 'bold' }}>生年月日</TableCell>
+                  <TableCell sx={{ width: 80, fontSize: 16, fontWeight: 'bold' }}>氏名</TableCell>
+                  <TableCell sx={{ width: 80, fontSize: 16, fontWeight: 'bold' }}>生年月日</TableCell>
+                  <TableCell sx={{ width: 8, fontSize: 16, fontWeight: 'bold' }}>年齢</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 <TableRow>
                   <TableCell sx={{ fontSize: 16 }}>{testUsers.name}</TableCell>
                   <TableCell sx={{ fontSize: 16 }}>{testUsers.birthday}</TableCell>
+                  <TableCell sx={{ fontSize: 16 }}>{testUsers.age}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
