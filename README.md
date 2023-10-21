@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TestUser Generator
 
-## Getting Started
+## 基本情報
 
-First, run the development server:
+### 概要
+『TestUser Generator（テストユーザージェネレーター）』は、ランダムに仮の氏名と生年月日などの情報を生成するWebアプリです。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### URL
+https://testusergenerator.vercel.app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 制作のきっかけ
+Web開発のローカル環境でユーザー等を作成する際、実在する人物や有名人の名前を使用してしまうとコンプライアンス上の問題が発生する可能性があります。そこで、テストユーザーを作成する際は仮の名前（例：山田 花子）を考える必要がありますが、たくさんの名前を考えるのは意外と大変な作業になります。この作業を自動化したいと思ったことがきっかけでこのアプリを開発しました。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 機能
+- 名前自動生成
+- 生年月日自動生成
+- 年齢自動計算
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 使用技術
 
-## Learn More
+### フロントエンド
+- Next.js
+- TypeScript
+- MUI
 
-To learn more about Next.js, take a look at the following resources:
+### バックエンド
+- Ruby on Rails API-only
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### インフラ
+- Vercel
+- Render
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### アーキテクチャ
+<img width="70%" alt="testusergenerator" src="https://github.com/kevinriverbook/test-user-generator-frontend/assets/92033434/3558e1b0-9ad1-4f94-a9ce-62c7c8c6ce79">
 
-## Deploy on Vercel
+## 技術的な挑戦
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### フロントエンドとバックエンドの分離
+- フロントエンドとバックエンドを分離したモダンなアーキテクチャで実装しました
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### git-flow
+- Gitワークフローにgit-flowを採用しました
+
+### タスク管理
+- タスク管理にはTrelloを使用しています
+
+
+## 今後の予定
+- 新機能の追加
+- Jestを使用したテストの作成
+
+## バージョン
+1.0.0
