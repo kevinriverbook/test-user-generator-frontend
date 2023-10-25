@@ -32,7 +32,7 @@ type TestUser = {
 
 export default function Home() {
   const [testUsers, setTestUsers] = useState<TestUser | null>(null);
-  const [numOfTestUsers, setNumOfTestUsers] = useState<string>('1');
+  const [numOfTestUsers, setNumOfTestUsers] = useState<number>(1);
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -45,8 +45,8 @@ export default function Home() {
     setTestUsers(data);
   }
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setNumOfTestUsers(event.target.value);
+  const handleChange = (event: SelectChangeEvent<number>) => {
+    setNumOfTestUsers(event.target.value as number);
   };
 
   return (
@@ -61,11 +61,11 @@ export default function Home() {
             label="人数"
             onChange={handleChange}
           >
-            <MenuItem value={'1'}>1</MenuItem>
-            <MenuItem value={'2'}>2</MenuItem>
-            <MenuItem value={'3'}>3</MenuItem>
-            <MenuItem value={'4'}>4</MenuItem>
-            <MenuItem value={'5'}>5</MenuItem>
+            <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={5}>5</MenuItem>
           </Select>
         </FormControl>
         { testUsers && 
