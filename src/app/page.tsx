@@ -11,6 +11,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const theme = createTheme({
   typography: {
@@ -28,6 +32,7 @@ type TestUser = {
 
 export default function Home() {
   const [testUsers, setTestUsers] = useState<TestUser | null>(null);
+  const [numOfTestUsers, setNumOfTestUsers] = useState<string>('1');
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -40,11 +45,31 @@ export default function Home() {
     setTestUsers(data);
   }
 
+  const handleChange = (event: SelectChangeEvent) => {
+    setNumOfTestUsers(event.target.value);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <main className={styles.main}>
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel id="select-small-label">人数</InputLabel>
+          <Select
+            labelId="select-small-label"
+            id="select-small"
+            value={numOfTestUsers}
+            label="人数"
+            onChange={handleChange}
+          >
+            <MenuItem value={'1'}>1</MenuItem>
+            <MenuItem value={'2'}>2</MenuItem>
+            <MenuItem value={'3'}>3</MenuItem>
+            <MenuItem value={'4'}>4</MenuItem>
+            <MenuItem value={'5'}>5</MenuItem>
+          </Select>
+        </FormControl>
         { testUsers && 
-          <TableContainer sx={{ maxWidth: 400 }} component={Paper}>
+          <TableContainer sx={{ mt: 4, maxWidth: 400 }} component={Paper}>
             <Table>
               <TableHead>
                 <TableRow>
