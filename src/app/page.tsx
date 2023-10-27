@@ -30,14 +30,22 @@ type TestUser = {
   age: number;
 }
 
+type Params = Record<'numOfTestUsers', string>;
+
 export default function Home() {
-  const [testUsers, setTestUsers] = useState<TestUser | null>(null);
+  const [testUsers, setTestUsers] = useState<Array<TestUser> | null>(null);
   const [numOfTestUsers, setNumOfTestUsers] = useState<number>(1);
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
+  const params_object: Params = {
+    numOfTestUsers: numOfTestUsers.toString()
+  };
+
+  const params: string = new URLSearchParams(params_object).toString();
+
   const getData = async ():  Promise<void> => {
-    const res = await fetch(apiUrl + 'generate_test_users');
+    const res = await fetch(apiUrl + 'generate_test_users/?' + params);
     if (!res.ok) {
       throw new Error('データ取得に失敗しました');
     }
@@ -79,11 +87,13 @@ export default function Home() {
                 </TableRow>
               </TableHead>
               <TableBody>
+              { testUsers.map((testUser) => 
                 <TableRow>
-                  <TableCell sx={{ fontSize: 16 }}>{testUsers.name}</TableCell>
-                  <TableCell sx={{ fontSize: 16 }}>{testUsers.birthday}</TableCell>
-                  <TableCell sx={{ fontSize: 16 }}>{testUsers.age}</TableCell>
+                  <TableCell sx={{ fontSize: 16 }}>{testUser.name}</TableCell>
+                  <TableCell sx={{ fontSize: 16 }}>{testUser.birthday}</TableCell>
+                  <TableCell sx={{ fontSize: 16 }}>{testUser.age}</TableCell>
                 </TableRow>
+              )}
               </TableBody>
             </Table>
           </TableContainer>
