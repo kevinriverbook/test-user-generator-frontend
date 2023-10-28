@@ -87,8 +87,8 @@ export default function Home() {
                 </TableRow>
               </TableHead>
               <TableBody>
-              { testUsers.map((testUser) => 
-                <TableRow>
+              { testUsers.map((testUser, index) => 
+                <TableRow key={index}>
                   <TableCell sx={{ fontSize: 16 }}>{testUser.name}</TableCell>
                   <TableCell sx={{ fontSize: 16 }}>{testUser.birthday}</TableCell>
                   <TableCell sx={{ fontSize: 16 }}>{testUser.age}</TableCell>
